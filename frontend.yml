@@ -1,21 +1,18 @@
 ---
-- name: Apache server installed
-  hosts: node1
-  become: true
+- name: Apache server instalado
+  hosts: web
+  become: yes
   tasks:
-
-  - name: latest Apache version installed
+  - name: Ultima versao do apache server instalado
     yum:
       name: httpd
       state: latest
-
-  - name: Apache enabled and running
+  - name: Apache started e enable
     service:
       name: httpd
       enabled: true
       state: started
-
-  - name: copy index.html
+  - name: Copiar web.html
     copy:
-      src: web.html
+      src: ~/ansible-files/web.html
       dest: /var/www/html/index.html
