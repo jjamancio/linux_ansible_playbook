@@ -1,8 +1,15 @@
 ---
 
-- name: Deploy Apache webserve to all the nodes
-  hosts: all
+- name: Deploy Apache and PHP  to all webservers nodes
+  hosts: web
   become: yes
 
   roles:
    - web
+
+- name: Deploy HAProxy to frontend 
+  hosts: frontend
+  become: yes
+
+  roles:
+   - frontend
