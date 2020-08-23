@@ -10,5 +10,6 @@
       dnf:
         name:
           - httpd
+          - php
         state: absent
 
