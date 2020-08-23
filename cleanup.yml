@@ -2,13 +2,25 @@
 
 - name: Undeploy Apache Webserver
   gather_facts: false
-  hosts: all 
+  hosts: webservers 
   become: true
   tasks:
 
-  - name: Remove installed packeges httpd and php 
+  - name: Remove installed packages httpd and php 
     yum:
       name:
         - httpd
         - php
+      state: absent
+
+- name: Undeploy HAProxy
+  gather_facts: false
+  hosts: frontend 
+  become: true
+  tasks:
+
+  - name: Remove installed package haproxy 
+    yum:
+      name:
+        - haproxy
       state: absent
