@@ -1,0 +1,14 @@
+---
+
+- name: Undeploy Apache Webserver
+  gather_facts: false
+  hosts: webservers
+  become: true
+  tasks:
+
+    - name: Remove httpd
+      dnf:
+        name:
+          - http
+        state: absent
+
