@@ -1,4 +1,6 @@
-[webservers]
+[frontend]
 node1
+
+[webservers]
 node2
 node3

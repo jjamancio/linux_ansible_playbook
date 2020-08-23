@@ -2,14 +2,13 @@
 
 - name: Undeploy Apache Webserver
   gather_facts: false
-  hosts: webservers
+  hosts: all 
   become: true
   tasks:
 
-    - name: Remove httpd
-      dnf:
-        name:
-          - httpd
-          - php
-        state: absent
-
+  - name: Remove installed packeges httpd and php 
+    yum:
+      name:
+        - httpd
+        - php
+      state: absent
