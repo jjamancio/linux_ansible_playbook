@@ -1,0 +1,16 @@
+---
+- name: Verifica componente frontend
+  hosts: frontend
+  gather_facts: no
+  vars:
+    frontend_bind_port: 80
+  tasks:
+  - name: Executando requisição HTTP
+    uri:
+      url: "http://{{ ansible_host }}:{{ frontend_bind_port }}"
+      return_content: yes
+    register: response
+    failed_when: "'<h1>Youtube Chapter Extractor</h1>' not in response.content"
+    retries: 3
+    delay: 3
+    until: response.status == 200

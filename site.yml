@@ -1,15 +1,14 @@
 ---
 
 - name: Deploy Apache and PHP  to all webservers nodes
-  hosts: web
+  hosts: webservers
   become: yes
 
   roles:
    - web
 
-- name: Deploy HAProxy to frontend 
+- name: Deploy HAProxy balancer
   hosts: frontend
   become: yes
-
   roles:
-   - frontend
+    - { role: geerlingguy.haproxy }
