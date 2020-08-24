@@ -1,0 +1,9 @@
+---
+
+- name: Deploy Apache and PHP  to all webservers nodes
+  hosts: webservers
+  become: yes
+
+  roles:
+   - web
+
