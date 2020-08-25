@@ -12,5 +12,5 @@
     register: response
     failed_when: "'configured using Ansible and I am' not in response.content"
     retries: 3
-    delay: 3
+    delay: 1
     until: response.status == 200
