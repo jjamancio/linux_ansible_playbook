@@ -2,7 +2,7 @@
 
 - name: Undeploy Apache Webserver
   gather_facts: false
-  hosts: webservers 
+  hosts: backend 
   become: true
   tasks:
 
