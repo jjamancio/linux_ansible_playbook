@@ -11,6 +11,6 @@
       return_content: yes
     register: response
     failed_when: "'realizado com Ansible' not in response.content"
-    retries: 3
+    retries: 1
     delay: 1
     until: response.status == 200
