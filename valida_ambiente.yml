@@ -1,8 +1,10 @@
 ---
-- name: Check that a page returns a status 200 and fail if the word realizado is not in the page contents
-  hosts: frontend
-  uri:
-    url: http://192.168.18.38
-    return_content: yes
-  register: this
-  failed_when: "'realizado' not in this.content"
+
+- hosts: all
+  tasks:
+    - name: Check that a page returns a status 200 and fail if the word realizado is not in the page contents
+    uri:
+      url: "http://{{ ansible_host }}"
+      return_content: yes
+    register: this
+    failed_when: "'realizado' not in this.content"
