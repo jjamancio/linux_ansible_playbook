@@ -1,16 +1,10 @@
 ---
-- name: Verifica componente frontend
-  hosts: frontend
-  gather_facts: no
-  vars:
-    frontend_bind_port: 80
-  tasks:
-  - name: Executando requisição HTTP
-    uri:
-      url: "http://{{ ansible_host }}:{{ frontend_bind_port }}"
-      return_content: yes
-    register: response
-    failed_when: "'realizado com Ansible' not in response.content"
-    retries: 1
-    delay: 3
-    until: response.status == 200
+- name: Check that a page returns a status 200 and fail if the word REALIZADO is not in the page contents
+  hosts:
+    - frontend
+    - backend
+  uri:
+    url: "http://{{ ansible_host }}:{{ frontend_bind_port }}"
+    return_content: yes
+  register: this
+  failed_when: "'realizado' not in this.content"
