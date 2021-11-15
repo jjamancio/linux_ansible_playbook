@@ -1,4 +1,3 @@
----
 - name: Check that a page returns a status 200 and fail if the word "realizado" is not in the page contents
   uri:
     url: "http://{{ ansible_host }}:{{ frontend_bind_port }}"
