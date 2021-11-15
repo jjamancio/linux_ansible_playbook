@@ -34,6 +34,13 @@
     permanent: true
     state: enabled
     immediate: yes
+    
+- name: Enable the firewall port for Apache forward to backend
+  firewalld: 
+    port: 80/tcp 
+    permanent: true 
+    state: enabled 
+    immediate: yes
 
 - name: Ensure HAProxy is started and enabled on boot.
   service: name=haproxy state=started enabled=yes
