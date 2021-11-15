@@ -5,9 +5,9 @@
   roles:
     - { role: geerlingguy.haproxy }
 
-- name: Enable the firewall port for HAProxy backend forward access
-  firewalld:
-    port: 80/tcp
-    permanent: true
-    state: enabled
-    immediate: yes
+  - name: Enable the firewall port for HAProxy backend forward access
+    firewalld:
+      port: 80/tcp
+      permanent: true
+      state: enabled
+      immediate: yes
