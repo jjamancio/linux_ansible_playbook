@@ -4,3 +4,6 @@ node1
 [backend]
 node2
 node3
+
+[windows_servers]
+windows
