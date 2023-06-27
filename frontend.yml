@@ -2,9 +2,5 @@
 - name: Deploy HAProxy balancer
   hosts: frontend
   become: yes
-  seboolean:
-    name: haproxy_connect_any
-    state: 1
-    persistent: yes
   roles:
     - { role: geerlingguy.haproxy }
