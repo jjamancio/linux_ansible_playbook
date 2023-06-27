@@ -2,10 +2,9 @@
 - name: Deploy HAProxy balancer
   hosts: frontend
   become: yes
-  - name: Set haproxy_connect_any SELinux rules
-    seboolean:
-      name: haproxy_connect_any
-      state: yes
-      persistent: yes
+  seboolean:
+    name: haproxy_connect_any
+    state: yes
+    persistent: yes
   roles:
     - { role: geerlingguy.haproxy }
