@@ -28,4 +28,4 @@
     seboolean:
       name: haproxy_connect_any
       state: no
-      persistent: no
+      persistent: yes
