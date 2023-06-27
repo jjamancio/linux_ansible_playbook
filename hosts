@@ -1,9 +1,9 @@
 [frontend]
-ansible_node1_564d01b6-6768-59e7-0e81-1cd791767204
+node1
 
 [backend]
-ansible_node2_564d31c2-720e-56b8-b3cb-13680b3c4c8f
-ansible_node3_564dead0-3727-045a-7704-5c416608e3e5
+node2
+node3
 
 [windows_servers]
 windows
