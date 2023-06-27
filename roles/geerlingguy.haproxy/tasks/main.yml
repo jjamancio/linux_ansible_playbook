@@ -1,4 +1,10 @@
 ---
+- name: Ensure SELinux permits HAProxy
+  seboolean:
+    name: haproxy_connect_any
+    state: yes
+    persistent: yes
+    
 - name: Ensure HAProxy is installed.
   package: name=haproxy state=present
 
