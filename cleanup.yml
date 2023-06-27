@@ -12,11 +12,11 @@
         - php
       state: absent
 
-  - name: Undeploy HAProxy
-    gather_facts: false
-    hosts: frontend 
-    become: true
-    tasks:
+- name: Undeploy HAProxy
+  gather_facts: false
+  hosts: frontend 
+  become: true
+  tasks:
 
   - name: Remove installed package haproxy 
     yum:
