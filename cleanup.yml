@@ -5,27 +5,27 @@
   become: true
   tasks:
 
-- name: Remove installed packages httpd and php 
-  yum:
-    name:
-      - httpd
-      - php
-    state: absent
+  - name: Remove installed packages httpd and php 
+    yum:
+      name:
+        - httpd
+        - php
+      state: absent
 
-- name: Undeploy HAProxy
-  gather_facts: false
-  hosts: frontend 
-  become: true
-  tasks:
+  - name: Undeploy HAProxy
+    gather_facts: false
+    hosts: frontend 
+    become: true
+    tasks:
 
-- name: Remove installed package haproxy 
-  yum:
-    name:
-      - haproxy
-    state: absent
+  - name: Remove installed package haproxy 
+    yum:
+      name:
+        - haproxy
+      state: absent
 
-- name: Restore SELinux defaults
-  seboolean:
-    name: haproxy_connect_any
-    state: no
-    persistent: no
+  - name: Restore SELinux defaults
+    seboolean:
+      name: haproxy_connect_any
+      state: no
+      persistent: no
