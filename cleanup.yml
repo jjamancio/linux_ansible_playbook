@@ -1,31 +1,29 @@
 ---
 - name: Undeploy Apache Webserver
   gather_facts: false
-  hosts: backend 
+  hosts: backend
   become: true
   tasks:
-
-  - name: Remove installed packages httpd and php 
-    yum:
-      name:
-        - httpd
-        - php
-      state: absent
+    - name: Remove installed packages httpd and php
+      ansible.builtin.yum:
+        name:
+          - httpd
+          - php
+        state: absent
 
 - name: Undeploy HAProxy
   gather_facts: false
-  hosts: frontend 
+  hosts: frontend
   become: true
   tasks:
+    - name: Remove installed package haproxy
+      ansible.builtin.yum:
+        name:
+          - haproxy
+        state: absent
 
-  - name: Remove installed package haproxy 
-    yum:
-      name:
-        - haproxy
-      state: absent
-
-  - name: Restore SELinux defaults
-    seboolean:
-      name: haproxy_connect_any
-      state: no
-      persistent: yes
+    - name: Restore SELinux defaults
+      ansible.posix.seboolean:
+        name: haproxy_connect_any
+        state: false
+        persistent: true

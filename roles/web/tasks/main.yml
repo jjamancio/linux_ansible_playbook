@@ -1,23 +1,25 @@
 ---
 # Playbook for Web Server
-  
+
 - name: Install httpd and php
-  yum:  name={{ item }} state=present
   with_items:
     - httpd
     - php
-  
+  ansible.builtin.yum:
+    name: "{{ item }}"
+    state: present
+
 - name: Start & Enable Apache Server to start on boot
-  service: 
-    name: httpd 
-    state: started 
-    enabled: yes
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: true
 
 - name: Enable the firewall port for Apache
-  firewalld: 
-    port: 80/tcp 
-    permanent: true 
-    state: enabled 
-    immediate: yes
-    
+  ansible.posix.firewalld:
+    port: 80/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+
 - include: copy_code.yml
