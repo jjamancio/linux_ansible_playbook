@@ -21,7 +21,7 @@ script:
   - ${PWD}/tests/test.sh
 
   # Make sure haproxy is installed.
-  - 'docker exec --tty ${container_id} env TERM=xterm haproxy -v'
+  - docker exec --tty ${container_id} env TERM=xterm haproxy -v
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

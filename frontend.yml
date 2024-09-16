@@ -1,6 +1,6 @@
 ---
 - name: Deploy HAProxy balancer
   hosts: frontend
-  become: yes
+  become: true
   roles:
     - { role: geerlingguy.haproxy }
